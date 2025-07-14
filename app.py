@@ -50,14 +50,16 @@ def save_as_pdf(resume_text, filename="resume.pdf"):
 # Resume Generator (OpenRouter)
 # ---------------------------
 def generate_resume(prompt_text):
+    api_key = st.secrets["OPENROUTER_API_KEY"]  # ⬅️ Load from secrets
+
     headers = {
-        "Authorization": "Bearer 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",  # 👈 Replace this
-        "HTTP-Referer": "https://your-app-name.streamlit.app",  # optional
+        "Authorization": f"Bearer {api_key}",
+        "HTTP-Referer": "https://resume-builder-app-wuvkaly2ubbqydvrjqrcny.streamlit.app/",  # use your real app URL
         "Content-Type": "application/json"
     }
 
     data = {
-        "model": "mistralai/mixtral-8x7b-instruct",  # or try "openai/gpt-3.5-turbo"
+        "model": "mistralai/mixtral-8x7b-instruct",
         "messages": [
             {"role": "user", "content": prompt_text}
         ]
@@ -69,6 +71,7 @@ def generate_resume(prompt_text):
         return response.json()['choices'][0]['message']['content']
     else:
         return f"Error: {response.status_code}\n{response.text}"
+
 
 # ---------------------------
 # Streamlit UI
