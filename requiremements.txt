@@ -1,4 +1,0 @@
-streamlit
-requests
-fpdf==1.7.2
-langchain
