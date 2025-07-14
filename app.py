@@ -53,7 +53,7 @@ def generate_resume(prompt_text):
     api_key = st.secrets["OPENROUTER_API_KEY"]  # ⬅️ Load from secrets
 
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {st.secrets['OPENROUTER_API_KEY']}",
         "HTTP-Referer": "https://resume-builder-app-wuvkaly2ubbqydvrjqrcny.streamlit.app/",  # use your real app URL
         "Content-Type": "application/json"
     }
