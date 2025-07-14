@@ -30,10 +30,8 @@ Only return the final resume. Do not include notes, suggestions, or formatting a
 # PDF Export Function
 # ---------------------------
 def save_as_pdf(resume_text, filename="resume.pdf"):
-    # Replace unsupported characters with standard ones
-    resume_text = resume_text.replace("•", "-")  # bullet point
-    resume_text = resume_text.encode("ascii", "ignore").decode()  # strip other Unicode characters
-
+    resume_text = resume_text.replace("•", "-")  # Replace bullet with dash
+    resume_text = resume_text.encode("ascii", "ignore").decode()  # Remove other Unicode
     pdf = FPDF()
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=15)
@@ -45,16 +43,15 @@ def save_as_pdf(resume_text, filename="resume.pdf"):
     pdf.output(filename)
     return filename
 
-
 # ---------------------------
 # Resume Generator (OpenRouter)
 # ---------------------------
 def generate_resume(prompt_text):
-    api_key = st.secrets["OPENROUTER_API_KEY"]  # ⬅️ Load from secrets
+    api_key = st.secrets["OPENROUTER_API_KEY"]
 
     headers = {
-        "Authorization": f"Bearer {st.secrets['OPENROUTER_API_KEY']}",
-        "HTTP-Referer": "https://resume-builder-app-wuvkaly2ubbqydvrjqrcny.streamlit.app/",  # use your real app URL
+        "Authorization": f"Bearer {api_key}",
+        "HTTP-Referer": "https://resume-builder-app-wuvkaly2ubbqydvrjqrcny.streamlit.app/",  # Replace with your actual Streamlit app URL
         "Content-Type": "application/json"
     }
 
@@ -71,7 +68,6 @@ def generate_resume(prompt_text):
         return response.json()['choices'][0]['message']['content']
     else:
         return f"Error: {response.status_code}\n{response.text}"
-
 
 # ---------------------------
 # Streamlit UI
