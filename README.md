@@ -18,7 +18,7 @@ Powered by OpenRouter's free GPT-like models such as Mixtral and LLaMA.
 
 ## 🚀 Live Demo
 
-👉 [Click here to try it out!](https://your-username.streamlit.app)
+👉 [Click here to try it out!](https://resume-builder-app-wuvkaly2ubbqydvrjqrcny.streamlit.app/)
 
 ---
 
@@ -68,5 +68,5 @@ Powered by OpenRouter's free GPT-like models such as Mixtral and LLaMA.
 
 ## 📬 Contact
 
-Made with ❤️ by [Your Name]  
-Email: you@example.com
+Made with ❤️ by [Amrita Jayamon]  
+Email: amritajayamon31@gmail.com
